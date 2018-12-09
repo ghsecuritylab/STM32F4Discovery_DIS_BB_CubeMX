@@ -49,7 +49,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32f4xx_hal.h"
-#include "crc.h"
 #include "i2c.h"
 #include "i2s.h"
 #include "lwip.h"
@@ -123,7 +122,6 @@ int main(void)
   MX_USB_HOST_Init();
   MX_LWIP_Init();
   MX_RNG_Init();
-  MX_CRC_Init();
   /* USER CODE BEGIN 2 */
 
   //Manually assign IP (dhcp_start(&gnetif) in Src/lwip.c is commented out).
@@ -152,7 +150,7 @@ int main(void)
     MX_LWIP_Process();
 
     //Loop all LEDs in a circle on the STM32F4Discovery to show that we're processing the main loop (initialization has finished).
-    if(millisecond_counter >= 1000)
+    if(millisecond_counter >= 100)
     {
     	HAL_GPIO_WritePin(GPIOD, GPIO_PIN_All, 0);
     	HAL_GPIO_TogglePin(GPIOD, led_counter);
