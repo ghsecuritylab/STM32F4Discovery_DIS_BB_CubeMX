@@ -48,7 +48,7 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f4xx_hal.h"
+#include "main.h"
 #include "lwip/opt.h"
 #include "lwip/mem.h"
 #include "lwip/memp.h"

@@ -60,7 +60,7 @@
 /* USER CODE END 0 */
 /* Private function prototypes -----------------------------------------------*/
 /* ETH Variables initialization ----------------------------------------------*/
-void _Error_Handler(char * file, int line);
+void Error_Handler(void);
 
 /* DHCP Variables initialization ---------------------------------------------*/
 uint32_t DHCPfineTimer = 0;

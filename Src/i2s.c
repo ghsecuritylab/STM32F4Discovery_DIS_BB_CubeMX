@@ -50,8 +50,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "i2s.h"
 
-#include "gpio.h"
-
 /* USER CODE BEGIN 0 */
 
 /* USER CODE END 0 */
@@ -73,7 +71,7 @@ void MX_I2S3_Init(void)
   hi2s3.Init.FullDuplexMode = I2S_FULLDUPLEXMODE_DISABLE;
   if (HAL_I2S_Init(&hi2s3) != HAL_OK)
   {
-    _Error_Handler(__FILE__, __LINE__);
+    Error_Handler();
   }
 
 }
@@ -81,7 +79,7 @@ void MX_I2S3_Init(void)
 void HAL_I2S_MspInit(I2S_HandleTypeDef* i2sHandle)
 {
 
-  GPIO_InitTypeDef GPIO_InitStruct;
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
   if(i2sHandle->Instance==SPI3)
   {
   /* USER CODE BEGIN SPI3_MspInit 0 */
@@ -90,6 +88,8 @@ void HAL_I2S_MspInit(I2S_HandleTypeDef* i2sHandle)
     /* I2S3 clock enable */
     __HAL_RCC_SPI3_CLK_ENABLE();
   
+    __HAL_RCC_GPIOA_CLK_ENABLE();
+    __HAL_RCC_GPIOC_CLK_ENABLE();
     /**I2S3 GPIO Configuration    
     PA4     ------> I2S3_WS
     PC7     ------> I2S3_MCK
@@ -146,13 +146,5 @@ void HAL_I2S_MspDeInit(I2S_HandleTypeDef* i2sHandle)
 /* USER CODE BEGIN 1 */
 
 /* USER CODE END 1 */
-
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

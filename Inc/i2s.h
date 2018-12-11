@@ -54,7 +54,6 @@
 #endif
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f4xx_hal.h"
 #include "main.h"
 
 /* USER CODE BEGIN Includes */
@@ -66,8 +65,6 @@ extern I2S_HandleTypeDef hi2s3;
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
-
-extern void _Error_Handler(char *, int);
 
 void MX_I2S3_Init(void);
 
